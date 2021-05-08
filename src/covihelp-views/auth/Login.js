@@ -11,13 +11,12 @@ import FilledInput from "@material-ui/core/FilledInput";
 import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
 import InputAdornment from "@material-ui/core/InputAdornment";
-// @material-ui/icons components
-import Email from "@material-ui/icons/Email";
 
 // core components
 import componentStyles from "assets/theme/views/auth/login.js";
 import {Link} from "react-router-dom";
 import FormLabel from "@material-ui/core/FormLabel";
+import {PhoneAndroid} from "@material-ui/icons";
 
 const useStyles = makeStyles(componentStyles);
 
@@ -32,12 +31,12 @@ function Login() {
             className={classes.cardHeader}
             title={
               <Box
-                fontSize="80%"
-                fontWeight="400"
-                component="small"
+                fontSize="120%"
+                fontWeight="500"
+                component="large"
                 color={theme.palette.gray[600]}
               >
-                Sign in
+                Log In
               </Box>
             }
             titleTypographyProps={{
@@ -55,14 +54,14 @@ function Login() {
               width="100%"
               marginBottom="1rem!important"
             >
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Phone Number</FormLabel>
               <FilledInput
                 autoComplete="off"
-                type="email"
-                placeholder="example@example.com"
+                type="text"
+                placeholder="+XX XXX XXX XXXX"
                 startAdornment={
                   <InputAdornment position="start">
-                    <Email />
+                    <PhoneAndroid />
                   </InputAdornment>
                 }
               />

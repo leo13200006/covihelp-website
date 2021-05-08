@@ -82,7 +82,7 @@ export default function AuthNavbar() {
               height="30px"
               component="img"
               className={classes.headerImg}
-              src={require("assets/img/brand/argon-react-white.png").default}
+              src={require("assets/img/brand/argon-react1-white.png").default}
             />
             <Hidden mdUp implementation="css">
               <IconButton
@@ -123,7 +123,7 @@ export default function AuthNavbar() {
                     height="36px"
                     component="img"
                     className={classes.headerImg}
-                    src={require("assets/img/brand/argon-react.png").default}
+                    src={require("assets/img/brand/argon-react1.png").default}
                   />
                   <IconButton
                     edge="start"

@@ -280,49 +280,6 @@ function Profile() {
                     </Grid>
                   </Grid>
                 </div>
-                <Box
-                  component={Divider}
-                  marginBottom="1.5rem!important"
-                  marginTop="1.5rem!important"
-                />
-                <Box
-                  component={Typography}
-                  variant="h6"
-                  color={theme.palette.gray[600] + "!important"}
-                  paddingTop=".25rem"
-                  paddingBottom=".25rem"
-                  fontSize=".75rem!important"
-                  letterSpacing=".04em"
-                  marginBottom="1.5rem!important"
-                  classes={{ root: classes.typographyRootH6 }}
-                >
-                  About me
-                </Box>
-                <div className={classes.plLg4}>
-                  <Grid container>
-                    <Grid item xs={12}>
-                      <FormGroup>
-                        <FormLabel>About me</FormLabel>
-                        <FormControl
-                          variant="filled"
-                          component={Box}
-                          width="100%"
-                          marginBottom="1rem!important"
-                        >
-                          <Box
-                            paddingLeft="0.75rem"
-                            paddingRight="0.75rem"
-                            component={FilledInput}
-                            autoComplete="off"
-                            multiline
-                            placeholder="A beautiful Dashboard for Bootstrap 4. It is Free and Open Source."
-                            rows="4"
-                          />
-                        </FormControl>
-                      </FormGroup>
-                    </Grid>
-                  </Grid>
-                </div>
               </CardContent>
             </Card>
           </Grid>

@@ -19,7 +19,7 @@ import Email from "@material-ui/icons/Email";
 // core components
 import componentStyles from "assets/theme/views/auth/register.js";
 import {Link} from "react-router-dom";
-import {CardMembershipOutlined, Phone} from "@material-ui/icons";
+import { Phone } from "@material-ui/icons";
 import FormLabel from "@material-ui/core/FormLabel";
 
 const useStyles = makeStyles(componentStyles);
@@ -35,9 +35,9 @@ function Register() {
             className={classes.cardHeader}
             title={
               <Box
-                fontSize="80%"
-                fontWeight="400"
-                component="small"
+                fontSize="120%"
+                fontWeight="500"
+                component="large"
                 color={theme.palette.gray[600]}
               >
                 Sign up
@@ -52,24 +52,6 @@ function Register() {
             }}
           />
           <CardContent classes={{ root: classes.cardContent }}>
-            <FormControl
-                variant="filled"
-                component={Box}
-                width="100%"
-                marginBottom="1.5rem!important"
-            >
-              <FormLabel>Aadhaar Card</FormLabel>
-              <FilledInput
-                  autoComplete="off"
-                  type="text"
-                  placeholder="XXXX XXXX XXXX XXXX"
-                  startAdornment={
-                    <InputAdornment position="start">
-                      <CardMembershipOutlined />
-                    </InputAdornment>
-                  }
-              />
-            </FormControl>
             <FormControl
                 variant="filled"
                 component={Box}
