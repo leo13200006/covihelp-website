@@ -17,6 +17,7 @@ import Email from "@material-ui/icons/Email";
 // core components
 import componentStyles from "assets/theme/views/auth/login.js";
 import {Link} from "react-router-dom";
+import FormLabel from "@material-ui/core/FormLabel";
 
 const useStyles = makeStyles(componentStyles);
 
@@ -54,10 +55,11 @@ function Login() {
               width="100%"
               marginBottom="1rem!important"
             >
+              <FormLabel>Email</FormLabel>
               <FilledInput
                 autoComplete="off"
                 type="email"
-                placeholder="Email"
+                placeholder="example@example.com"
                 startAdornment={
                   <InputAdornment position="start">
                     <Email />
@@ -67,7 +69,11 @@ function Login() {
             </FormControl>
 
             <Box textAlign="center" marginTop="1.5rem" marginBottom="1.5rem">
-              <Button color="primary" variant="contained">
+              <Button
+                  component={Link}
+                  to="/auth/otp"
+                  color="primary"
+                  variant="contained">
                 Sign in
               </Button>
             </Box>
@@ -77,13 +83,6 @@ function Login() {
 
         <Grid container component={Box} marginTop="1rem">
           <Grid item xs={6} component={Box} textAlign="left">
-            <a
-              href="#admui"
-              onClick={(e) => e.preventDefault()}
-              className={classes.footerLinks}
-            >
-              Forgot password
-            </a>
           </Grid>
           <Grid item xs={6} component={Box} textAlign="right">
             <Link

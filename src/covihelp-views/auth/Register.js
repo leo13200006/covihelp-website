@@ -15,12 +15,12 @@ import Grid from "@material-ui/core/Grid";
 import InputAdornment from "@material-ui/core/InputAdornment";
 // @material-ui/icons components
 import Email from "@material-ui/icons/Email";
-import Person from "@material-ui/icons/Person";
 
 // core components
 import componentStyles from "assets/theme/views/auth/register.js";
 import {Link} from "react-router-dom";
 import {CardMembershipOutlined, Phone} from "@material-ui/icons";
+import FormLabel from "@material-ui/core/FormLabel";
 
 const useStyles = makeStyles(componentStyles);
 
@@ -58,10 +58,11 @@ function Register() {
                 width="100%"
                 marginBottom="1.5rem!important"
             >
+              <FormLabel>Aadhaar Card</FormLabel>
               <FilledInput
                   autoComplete="off"
                   type="text"
-                  placeholder="Aadhaar Card"
+                  placeholder="XXXX XXXX XXXX XXXX"
                   startAdornment={
                     <InputAdornment position="start">
                       <CardMembershipOutlined />
@@ -75,10 +76,11 @@ function Register() {
                 width="100%"
                 marginBottom="1.5rem!important"
             >
+              <FormLabel>Phone Number</FormLabel>
               <FilledInput
                   autoComplete="off"
                   type="phone"
-                  placeholder="Phone"
+                  placeholder="+XX XXX XXX XXXX"
                   startAdornment={
                     <InputAdornment position="start">
                       <Phone />
@@ -92,27 +94,11 @@ function Register() {
               width="100%"
               marginBottom="1.5rem!important"
             >
-              <FilledInput
-                autoComplete="off"
-                type="text"
-                placeholder="Name"
-                startAdornment={
-                  <InputAdornment position="start">
-                    <Person />
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-            <FormControl
-              variant="filled"
-              component={Box}
-              width="100%"
-              marginBottom="1.5rem!important"
-            >
+              <FormLabel>Email</FormLabel>
               <FilledInput
                 autoComplete="off"
                 type="email"
-                placeholder="Email"
+                placeholder="example@example.cpm"
                 startAdornment={
                   <InputAdornment position="start">
                     <Email />
@@ -143,7 +129,11 @@ function Register() {
               }}
             />
             <Box textAlign="center" marginTop="1.5rem" marginBottom="1.5rem">
-              <Button color="primary" variant="contained">
+              <Button
+                  component={Link}
+                  to="/auth/otp"
+                  color="primary"
+                  variant="contained">
                 Create account
               </Button>
             </Box>

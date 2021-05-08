@@ -19,8 +19,8 @@ const AuthHeader = () => {
       <Box
         className={classes.header}
         position="relative"
-        paddingTop="8rem"
-        paddingBottom="8rem"
+        paddingTop="6rem"
+        paddingBottom="6rem"
       >
         <Container maxWidth="xl">
           <Box marginBottom="6rem" textAlign="center">
@@ -35,7 +35,7 @@ const AuthHeader = () => {
                 <Box
                   component="p"
                   color={theme.palette.gray[400]}
-                  lineHeight="1"
+                  lineHeight="1.7"
                   fontSize="1rem"
                 >
                   God helps those, who help others.
@@ -43,10 +43,10 @@ const AuthHeader = () => {
                 <Box
                     component="p"
                     color={theme.palette.gray[400]}
-                    lineHeight="1"
+                    lineHeight="1.7"
                     fontSize="0.8rem"
                     textAlign="right"
-                    width="80%"
+                    width="85%"
                 >
                   - Amit Abraham
                 </Box>
