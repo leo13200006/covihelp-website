@@ -14,12 +14,9 @@ import ListItem from "@material-ui/core/ListItem";
 import Menu from "@material-ui/core/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 // @material-ui/icons components
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import Clear from "@material-ui/icons/Clear";
 import Dashboard from "@material-ui/icons/Dashboard";
 import MenuIcon from "@material-ui/icons/Menu";
-import Person from "@material-ui/icons/Person";
-import VpnKey from "@material-ui/icons/VpnKey";
 
 // core components
 import componentStyles from "assets/theme/components/auth-navbar.js";
@@ -65,54 +62,6 @@ export default function AuthNavbar() {
           marginRight=".5rem!important"
         />
         Dashboard
-      </ListItem>
-      <ListItem
-        component={Link}
-        to="/auth/register"
-        onClick={handleMenuClose}
-        classes={{
-          root: classes.listItemRoot,
-        }}
-      >
-        <Box
-          component={AccountCircle}
-          width="1.25rem!important"
-          height="1.25rem!important"
-          marginRight=".5rem!important"
-        />
-        Register
-      </ListItem>
-      <ListItem
-        component={Link}
-        to="/auth/login"
-        onClick={handleMenuClose}
-        classes={{
-          root: classes.listItemRoot,
-        }}
-      >
-        <Box
-          component={VpnKey}
-          width="1.25rem!important"
-          height="1.25rem!important"
-          marginRight=".5rem!important"
-        />
-        Login
-      </ListItem>
-      <ListItem
-        component={Link}
-        to="/admin/user-profile"
-        onClick={handleMenuClose}
-        classes={{
-          root: classes.listItemRoot,
-        }}
-      >
-        <Box
-          component={Person}
-          width="1.25rem!important"
-          height="1.25rem!important"
-          marginRight=".5rem!important"
-        />
-        Profile
       </ListItem>
     </Box>
   );
