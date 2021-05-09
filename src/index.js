@@ -13,6 +13,8 @@ import "assets/scss/argon-dashboard-react.scss";
 
 import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";
+// import Dashboard from "views/admin/Dashboard.js";
+import Home from "./covi-layout/home";
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
@@ -20,6 +22,7 @@ ReactDOM.render(
     <CssBaseline />
     <BrowserRouter>
       <Switch>
+        <Route path="/home" render={(props) => <Home {...props} />} />
         <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
         <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
         <Redirect from="/" to="/auth/register" />

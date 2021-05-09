@@ -20,6 +20,12 @@ import VpnKey from "@material-ui/icons/VpnKey";
 
 var routes = [
   {
+    path: "/home",
+    name: "Home",
+    icon: FlashOn,
+    upgradeToPro: true,
+  },
+  {
     href: "#pablo",
     name: "Upgrade to pro",
     icon: FlashOn,
