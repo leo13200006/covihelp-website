@@ -27,7 +27,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import CardActions from '@material-ui/core/CardActions';
 // import componentStyles from "assets/theme/components/header.js";
-import rct from "../../assets/img/theme/angular.jpg"
+import rct from "../../assets/img/theme/oxygen.jpg"
 
 // const useStyles = makeStyles(componentStyles);
 
@@ -90,8 +90,7 @@ mar:{
                    <CardContent>
                       <Typography variant="body2" color="textSecondary" component="p">
                       <b>Description: </b>
-                        This impressive paella is a perfect party dish and a fun meal to cook together with your
-                        guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                        I have oxygen cylinders around Camp, Pune. Do get in touch for purchase. You have to transport it. No delivery provided.
                       </Typography>
                     </CardContent>
 
@@ -132,8 +131,7 @@ mar:{
                    <CardContent>
                       <Typography variant="body2" color="textSecondary" component="p">
                       <b>Description: </b>
-                        This impressive paella is a perfect party dish and a fun meal to cook together with your
-                        guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                      I have oxygen cylinders around Camp, Pune. Do get in touch for purchase. You have to transport it. No delivery provided.
                       </Typography>
                     </CardContent>
 
