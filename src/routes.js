@@ -3,7 +3,7 @@ import Dashboard from "views/admin/Dashboard.js";
 import Icons from "views/admin/Icons.js";
 import Login from "covihelp-views/auth/Login.js";
 import Maps from "views/admin/Maps.js";
-import Profile from "views/admin/Profile.js";
+import Profile from "covihelp-views/user/Profile.js";
 import Register from "covihelp-views/auth/Register.js";
 import Tables from "views/admin/Tables.js";
 // @material-ui/icons components
@@ -17,6 +17,7 @@ import Palette from "@material-ui/icons/Palette";
 import Person from "@material-ui/icons/Person";
 import Tv from "@material-ui/icons/Tv";
 import VpnKey from "@material-ui/icons/VpnKey";
+import Otp from "./covihelp-views/auth/Otp";
 
 var routes = [
   {
@@ -85,6 +86,14 @@ var routes = [
     icon: AccountCircle,
     iconColor: "ErrorLight",
     component: Register,
+    layout: "/auth",
+  },
+  {
+    path: "/otp",
+    name: "Otp",
+    icon: AccountCircle,
+    iconColor: "ErrorLight",
+    component: Otp,
     layout: "/auth",
   },
   {

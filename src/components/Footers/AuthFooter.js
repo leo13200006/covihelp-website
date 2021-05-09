@@ -32,7 +32,7 @@ const Footer = () => {
               className={classes.copyrightLink}
               target="_blank"
             >
-              Furious Four
+              CoViHelp
             </a>
           </div>
         </Grid>

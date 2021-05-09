@@ -1,7 +1,7 @@
 const componentStyles = (theme) => ({
   wrapperBox: {
     [theme.breakpoints.up("md")]: {
-      paddingTop: "8rem",
+      paddingTop: "5rem",
     },
     backgroundSize: "cover",
     backgroundPosition: "center top",
