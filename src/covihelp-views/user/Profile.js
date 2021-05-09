@@ -18,6 +18,8 @@ import Typography from "@material-ui/core/Typography";
 // core components
 import UserHeader from "components/Headers/UserHeader.js";
 import componentStyles from "assets/theme/views/admin/profile.js";
+import {Button} from "@material-ui/core";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(componentStyles);
 
@@ -278,6 +280,20 @@ function Profile() {
                         </FormControl>
                       </FormGroup>
                     </Grid>
+                  </Grid>
+                  <Grid>
+                    <Box textAlign="right" marginTop="1.5rem" marginBottom="1.5rem">
+                      <Button
+                          to="/admin/dashboard"
+                          size="medium"
+                          style={{ width: "10%" }}
+                          component={Link}
+                          color="default"
+                          variant="contained"
+                        >
+                        Submit
+                      </Button>
+                    </Box>
                   </Grid>
                 </div>
               </CardContent>
