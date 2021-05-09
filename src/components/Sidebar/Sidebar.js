@@ -13,7 +13,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Menu from "@material-ui/core/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 // @material-ui/icons components
 import Clear from "@material-ui/icons/Clear";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -44,18 +43,8 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
     return routes.map((prop, key) => {
       if (prop.divider) {
         return <Divider key={key} classes={{ root: classes.divider }} />;
-      } else if (prop.title) {
-        return (
-          <Typography
-            key={key}
-            variant="h6"
-            component="h6"
-            classes={{ root: classes.title }}
-          >
-            {prop.title}
-          </Typography>
-        );
       }
+
       let textContent = (
         <>
           <Box minWidth="2.25rem" display="flex" alignItems="center">
@@ -98,7 +87,7 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
             {textContent}
           </ListItem>
         );
-      } else {
+      } else if (prop.layout === "/admin") {
         return (
           <ListItem
             key={key}
