@@ -27,11 +27,14 @@ var routes = [
     layout: "/admin",
   },
   {
+    // create new path
     path: "/user-profile",
     name: "Want Help?",
     icon: AddCircle,
     iconColor: "Info",
+    // change this component and add you component of form just center that form it will look good
     component: Profile,
+    // layout should be same don't change this
     layout: "/admin",
   },
   {
