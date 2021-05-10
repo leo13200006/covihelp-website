@@ -7,6 +7,7 @@ import Person from "@material-ui/icons/Person";
 import Tv from "@material-ui/icons/Tv";
 import VpnKey from "@material-ui/icons/VpnKey";
 import Otp from "./covihelp-views/auth/Otp";
+import {AddCircle} from "@material-ui/icons";
 
 var routes = [
   {
@@ -22,6 +23,14 @@ var routes = [
     name: "User Profile",
     icon: Person,
     iconColor: "WarningLight",
+    component: Profile,
+    layout: "/admin",
+  },
+  {
+    path: "/user-profile",
+    name: "Want Help?",
+    icon: AddCircle,
+    iconColor: "Info",
     component: Profile,
     layout: "/admin",
   },
