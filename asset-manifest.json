@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/covihelp-website/static/css/main.ab1fc3f9.chunk.css",
+    "main.js": "/covihelp-website/static/js/main.5a4dc96c.chunk.js",
+    "main.js.map": "/covihelp-website/static/js/main.5a4dc96c.chunk.js.map",
+    "runtime-main.js": "/covihelp-website/static/js/runtime-main.dc51bcc7.js",
+    "runtime-main.js.map": "/covihelp-website/static/js/runtime-main.dc51bcc7.js.map",
+    "static/css/2.523aab00.chunk.css": "/covihelp-website/static/css/2.523aab00.chunk.css",
+    "static/js/2.4ffdf2f2.chunk.js": "/covihelp-website/static/js/2.4ffdf2f2.chunk.js",
+    "static/js/2.4ffdf2f2.chunk.js.map": "/covihelp-website/static/js/2.4ffdf2f2.chunk.js.map",
+    "index.html": "/covihelp-website/index.html",
+    "static/css/2.523aab00.chunk.css.map": "/covihelp-website/static/css/2.523aab00.chunk.css.map",
+    "static/css/main.ab1fc3f9.chunk.css.map": "/covihelp-website/static/css/main.ab1fc3f9.chunk.css.map",
+    "static/js/2.4ffdf2f2.chunk.js.LICENSE.txt": "/covihelp-website/static/js/2.4ffdf2f2.chunk.js.LICENSE.txt",
+    "static/media/covihelp-white.png": "/covihelp-website/static/media/covihelp-white.1304af3c.png",
+    "static/media/covihelp.png": "/covihelp-website/static/media/covihelp.c8827553.png",
+    "static/media/all.min.css": "/covihelp-website/static/media/fa-solid-900.f4f93856.woff",
+    "static/media/nucleo.css": "/covihelp-website/static/media/nucleo-icons.d6a66724.ttf",
+    "static/media/oxygen.a1c9833b.jpg": "/covihelp-website/static/media/oxygen.a1c9833b.jpg",
+    "static/media/profile-cover.jpg": "/covihelp-website/static/media/profile-cover.9c92bddd.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dc51bcc7.js",
+    "static/css/2.523aab00.chunk.css",
+    "static/js/2.4ffdf2f2.chunk.js",
+    "static/css/main.ab1fc3f9.chunk.css",
+    "static/js/main.5a4dc96c.chunk.js"
+  ]
+}
