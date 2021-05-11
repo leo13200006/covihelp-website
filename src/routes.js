@@ -8,6 +8,7 @@ import Tv from "@material-ui/icons/Tv";
 import VpnKey from "@material-ui/icons/VpnKey";
 import Otp from "./covihelp-views/auth/Otp";
 import {AddCircle} from "@material-ui/icons";
+import Checkboxes from "./covihelp-views/user/Checkboxes";
 
 var routes = [
   {
@@ -27,15 +28,17 @@ var routes = [
     layout: "/admin",
   },
   {
-    // create new path
-    path: "/user-profile",
+    path: "/help",
     name: "Want Help?",
     icon: AddCircle,
     iconColor: "Info",
-    // change this component and add you component of form just center that form it will look good
-    component: Profile,
-    // layout should be same don't change this
+    component: Checkboxes,
     layout: "/admin",
+    location: {
+      state: {
+        mode: false
+      }
+    }
   },
   {
     path: "/login",

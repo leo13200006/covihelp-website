@@ -214,43 +214,22 @@ Sidebar.defaultProps = {
 };
 
 Sidebar.propTypes = {
-  // this is the input/component that will be rendered on responsive
-  // in our demo, we add this input component since the AdminNavbar
-  // will not be visible on responsive mode
   input: PropTypes.node,
-  // this is the dropdown/component that will be rendered on responsive
-  // in our demo, it is the same with the dropdown from the AdminNavbar
-  // since the AdminNavbar will not be visible on responsive mode
   dropdown: PropTypes.node,
-  // NOTE: we recommend that your logo has the following dimensions
-  // // 135x40 or 487x144 or a resize of these dimensions
   logo: PropTypes.shape({
-    // innerLink is for links that will direct the user within the app
-    // it will be rendered as <Link to="...">...</Link> tag
     innerLink: PropTypes.string,
-    // outterLink is for links that will direct the user outside the app
-    // it will be rendered as simple <a href="...">...</a> tag
     outterLink: PropTypes.string,
-    // the image src of the logo
     imgSrc: PropTypes.string.isRequired,
-    // the alt for the img
     imgAlt: PropTypes.string.isRequired,
   }),
-  // links that will be displayed inside the component
   routes: PropTypes.arrayOf(
     PropTypes.oneOfType([
-      // this generates an anchor (<a href="href">..</a>) link
-      // this is a link that is sent outside the app
       PropTypes.shape({
-        // if this is set to true, than the link will have an absolute position
-        // use wisely and with precaution
         upgradeToPro: PropTypes.bool,
         href: PropTypes.string,
         name: PropTypes.string,
         icon: PropTypes.oneOfType([
-          // this refers to icons such as ni ni-spaceship or fa fa-heart
           PropTypes.string,
-          // this refers to icons from @material-ui/icons
           PropTypes.object,
         ]),
         iconColor: PropTypes.oneOf([
@@ -264,17 +243,13 @@ Sidebar.propTypes = {
           "InfoLight",
         ]),
       }),
-      // this generates a Link (<Link to="layout + path">..</Link>) link
-      // this is a link that is sent inside the app
       PropTypes.shape({
         path: PropTypes.string,
         name: PropTypes.string,
         layout: PropTypes.string,
         component: PropTypes.func,
         icon: PropTypes.oneOfType([
-          // this refers to icons such as ni ni-spaceship or fa fa-heart
           PropTypes.string,
-          // this refers to icons from @material-ui/icons
           PropTypes.object,
         ]),
         iconColor: PropTypes.oneOf([
@@ -288,12 +263,9 @@ Sidebar.propTypes = {
           "InfoLight",
         ]),
       }),
-      // this is just a title without any action on it
-      // you can think of it as a disabled link
       PropTypes.shape({
         title: PropTypes.string,
       }),
-      // this is just a divider line
       PropTypes.shape({
         divider: true,
       }),

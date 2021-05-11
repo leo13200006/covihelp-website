@@ -11,6 +11,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import Card from "@material-ui/core/Card";
 import {makeStyles} from "@material-ui/core/styles";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles(componentStyles);
 function TicketCard({name, date, img, imgAlt, des}) {
@@ -25,9 +26,10 @@ function TicketCard({name, date, img, imgAlt, des}) {
             marginTop: 100
         }
     };
+
     return (
         <>
-            <Card className={classes.root} style={styles.mar}>
+            <Card className={classes.root} style={styles.mar} component={Link} to={{pathname: "/admin/help", state: true}} >
                 <CardHeader
                     avatar={
                         <Avatar aria-label="recipe" className={classes.avatar}>
