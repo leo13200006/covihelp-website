@@ -28,6 +28,14 @@ var routes = [
     layout: "/admin",
   },
   {
+    path: "/set-user-profile",
+    name: "Setup User Profile",
+    icon: Person,
+    iconColor: "WarningLight",
+    component: Profile,
+    layout: "/auth",
+  },
+  {
     path: "/help",
     name: "Want Help?",
     icon: AddCircle,

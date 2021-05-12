@@ -26,7 +26,7 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
   const classes = useStyles();
   const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const loggedIn = localStorage.getItem('jwtToken1') !== null;
   const isMenuOpen = Boolean(anchorEl);
 
   const handleMenuOpen = (event) => {
