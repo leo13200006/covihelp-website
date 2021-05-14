@@ -26,7 +26,7 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
   const classes = useStyles();
   const location = useLocation();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const loggedIn = localStorage.getItem('jwtToken1') !== null;
+  const loggedIn = localStorage.getItem('jwtToken') !== null;
   const isMenuOpen = Boolean(anchorEl);
 
   const handleMenuOpen = (event) => {
@@ -38,7 +38,6 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
   };
 
   const menuId = "responsive-menu-id";
-  // creates the links that appear in the left menu / Sidebar
   const createLinks = (routes) => {
     return routes.map((prop, key) => {
       if (prop.divider) {
@@ -93,7 +92,7 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
             key={key}
             component={Link}
             onClick={handleMenuClose}
-            to={prop.layout + prop.path}
+            to={loggedIn ? prop.layout + prop.path : "/auth/register"}
             classes={{
               root:
                 classes.listItemRoot +
@@ -109,6 +108,29 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
           >
             {textContent}
           </ListItem>
+        );
+      } else if (prop.layout === "/auth" && !loggedIn && (prop.path === "/login" || prop.path === "/register")) {
+        return (
+            <ListItem
+                key={key}
+                component={Link}
+                onClick={handleMenuClose}
+                to={prop.layout + prop.path}
+                classes={{
+                  root:
+                      classes.listItemRoot +
+                      (prop.upgradeToPro
+                          ? " " + classes.listItemRootUpgradeToPro
+                          : ""),
+                  selected: classes.listItemSelected,
+                }}
+                selected={
+                  location.pathname === prop.layout + prop.path ||
+                  prop.upgradeToPro === true
+                }
+            >
+              {textContent}
+            </ListItem>
         );
       }
     });

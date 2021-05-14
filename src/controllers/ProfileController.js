@@ -2,7 +2,7 @@ import {sleep} from "./LoginControllers";
 
 export const checkAlredyDataIsPresentOrNOt = async () => {
     await sleep(1000)
-    return true
+    return false
 }
 
 export const createProfile = async (profileData) => {

@@ -11,7 +11,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import Card from "@material-ui/core/Card";
 import {makeStyles} from "@material-ui/core/styles";
-import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles(componentStyles);
 function TicketCard({name, date, img, imgAlt, des}) {
@@ -27,9 +27,15 @@ function TicketCard({name, date, img, imgAlt, des}) {
         }
     };
 
+    const history = useHistory();
+
+    const onClick = () => {
+        history.push("/admin/help", true)
+    }
+
     return (
         <>
-            <Card className={classes.root} style={styles.mar} component={Link} to={{pathname: "/admin/help", state: true}} >
+            <Card className={classes.root} style={styles.mar} onClick={onClick}>
                 <CardHeader
                     avatar={
                         <Avatar aria-label="recipe" className={classes.avatar}>

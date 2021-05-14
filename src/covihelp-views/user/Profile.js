@@ -40,6 +40,7 @@ function Profile() {
   const [phoneErr, setPhoneErr] = useState("");
   const [emailErr, setEmailErr] = useState("");
   const [pincodeErr, setPincodeErr] = useState("");
+  const loggedIn = localStorage.getItem('jwtToken') !== null;
 
   console.log("Phone:", phone, "Email:", email)
 
@@ -429,13 +430,13 @@ function Profile() {
                       <Grid>
                         <Box textAlign="right" marginTop="1.5rem" marginBottom="1.5rem">
                           <Button
+                              disabled={!loggedIn}
                               type="submit"
                               size="medium"
-                              style={{ width: "10%" }}
                               color="default"
                               variant="contained"
                           >
-                            Submit
+                            {!loggedIn ? "Log In First" : "Submit"}
                           </Button>
                         </Box>
                       </Grid>

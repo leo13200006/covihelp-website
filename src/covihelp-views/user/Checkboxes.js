@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import FormGroup from "@material-ui/core/FormGroup";
-import {Box, Divider, FormControlLabel, FormLabel, Grid} from '@material-ui/core';
+import {Box, CircularProgress, Divider, FormControlLabel, FormLabel, Grid} from '@material-ui/core';
 import FilledInput from "@material-ui/core/FilledInput";
 import Checkbox from "@material-ui/core/Checkbox";
 import {makeStyles, useTheme} from "@material-ui/core/styles";
@@ -15,9 +15,10 @@ import Button from "@material-ui/core/Button";
 import CardContent from "@material-ui/core/CardContent";
 import Container from "@material-ui/core/Container";
 import componentStyles from "assets/theme/views/admin/profile.js";
-import {Link} from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import UserHeader from "../../components/Headers/UserHeader";
 import {DropzoneArea} from "material-ui-dropzone";
+import {createTicket, updateTicket} from "../../controllers/TicketController";
 
 const useStyles = makeStyles(componentStyles);
 
@@ -30,15 +31,58 @@ const Checkboxes = (props) => {
         root: classes.formControlCheckboxLabelRoot,
         label: classes.formControlCheckboxLabelLabel,
     }
+    const loggedIn = localStorage.getItem('jwtToken') !== null;
+    const [wantOxygen, setWantOxygen] = useState(true);
+    const [oxygen, setOxygen] = useState("")
+    const [wantBeds, setWantBeds] = useState(true);
+    const [beds, setBeds] = useState("")
+    const [wantPlasma, setWantPlasma] = useState(true);
+    const [plasma, setPlasma] = useState("")
+    const [des, setDes] = useState("");
+    const [files, setFiles] = useState();
+    const [bloodType, setBloodType] = useState()
+    const [bloodGroup, setBloodGroup] = useState()
+    const [loading, setLoading] = useState(false)
 
-    return (
-        <>
-            <UserHeader />
-            <Container
-                maxWidth={false}
-                component={Box}
-                marginTop="-6rem"
-                classes={{ root: classes.containerRoot }}
+    const history = useHistory();
+
+    const onSubmit = async () => {
+        setLoading(true)
+        console.log(bloodGroup + " " + bloodType)
+        setPlasma(bloodGroup + "" + bloodType)
+
+        if (mode) {
+            await createTicket({oxygen, plasma, beds, des, files})
+        } else {
+            await updateTicket({id:"id1234567", oxygen, plasma, beds, des, files})
+        }
+
+        setLoading(false)
+        history.push("/admin/dashboard")
+    }
+
+    const handleChange = (e) => {
+        if (e.target.name === 'oxygen') {
+            setOxygen(e.target.value)
+        } else if (e.target.name === 'bed') {
+            setBeds(e.target.value)
+        } else if (e.target.name === 'des') {
+            setDes(e.target.value)
+        } else if (e.target.name === 'files') {
+            setFiles(e.target.files)
+        }
+    }
+
+    const mainView = () => (
+        <Container
+            maxWidth={false}
+            component={Box}
+            marginTop="-6rem"
+            classes={{ root: classes.containerRoot }}
+        >
+            <form
+                className={classes.form}
+                onSubmit={onSubmit}
             >
                 <Grid container>
                     <Grid
@@ -102,13 +146,16 @@ const Checkboxes = (props) => {
                                     <Grid>
                                         <FormGroup >
                                             <FormGroup>
-                                                <FormLabel>Requirement of Oxygen</FormLabel>
+                                                <FormLabel disabled={!wantOxygen}>Requirement of Oxygen</FormLabel>
                                                 <Grid direction="row" container md={12} lg={12} xl={12} sm={12}>
                                                     <Grid item xl={2} lg={4} md={5} sm={11} xs={11}>
                                                         <FormControlLabel
                                                             disabled={mode}
                                                             value="end"
-                                                            control={<Checkbox color="primary" />}
+                                                            control={<Checkbox
+                                                                defaultChecked={wantOxygen}
+                                                                onChange={e => setWantOxygen(e.target.checked)}
+                                                                color="primary" />}
                                                             label="Oxygen"
                                                             labelPlacement="end"
                                                             classes={formClasses}
@@ -116,7 +163,10 @@ const Checkboxes = (props) => {
                                                     </Grid>
                                                     <Grid item xl={10} lg={8} md={7} sm={11} xs={11}>
                                                         <Box
-                                                            disabled={mode}
+                                                            defaultValue={oxygen}
+                                                            onChange={handleChange}
+                                                            name={"oxygen"}
+                                                            disabled={!wantOxygen || mode}
                                                             paddingLeft="0.75rem"
                                                             paddingRight="0.75rem"
                                                             component={FilledInput}
@@ -129,23 +179,29 @@ const Checkboxes = (props) => {
                                             </FormGroup>
                                             <Divider style={{ marginBottom: "1em" }} />
                                             <FormGroup>
-                                                <FormLabel>Requirement of Plasma</FormLabel>
+                                                <FormLabel disabled={!wantPlasma}>Requirement of Plasma</FormLabel>
                                                 <Grid direction="row" container md={12} lg={12} xl={12} sm={12}>
                                                     <Grid item xl={2} lg={4} md={5} sm={11} xs={11}>
                                                         <FormControlLabel
                                                             disabled={mode}
                                                             value="end"
-                                                            control={<Checkbox color="primary" />}
+                                                            control={<Checkbox
+                                                                defaultChecked={wantPlasma}
+                                                                onChange={e => setWantPlasma(e.target.checked)}
+                                                                color="primary" />}
                                                             label="Plasma"
                                                             labelPlacement="end"
                                                             classes={formClasses}
                                                         />
                                                     </Grid>
                                                     <Grid direction="row" container xl={10} lg={8} md={7} sm={11}>
-                                                        <Grid item>
-                                                            <FormControl className={classes.formControl}>
+                                                        <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
+                                                            <FormControl className={classes.formControl}
+                                                                         style={{ width: "100%" }}>
                                                                 <Select
-                                                                    disabled={mode}
+                                                                    value={bloodGroup}
+                                                                    disabled={!wantPlasma || mode}
+                                                                    style={{ width: "100%" }}
                                                                 >
                                                                     <MenuItem value="">
                                                                         <em>Select blood group</em>
@@ -158,10 +214,13 @@ const Checkboxes = (props) => {
                                                                 <FormHelperText>Select blood group</FormHelperText>
                                                             </FormControl>
                                                         </Grid>
-                                                        <Grid item>
-                                                            <FormControl className={classes.formControl}>
+                                                        <Grid item xl={6} lg={6} md={6} sm={6} xs={6}>
+                                                            <FormControl className={classes.formControl}
+                                                                         style={{ width: "100%" }}>
                                                                 <Select
-                                                                    disabled={mode}
+                                                                    value={bloodType}
+                                                                    disabled={!wantPlasma || mode}
+                                                                    style={{ width: "100%" }}
                                                                 >
                                                                     <MenuItem value="">
                                                                         <em>Select blood type</em>
@@ -181,13 +240,16 @@ const Checkboxes = (props) => {
                                                 marginTop="1.5rem!important"
                                             />
                                             <FormGroup>
-                                                <FormLabel>Requirement of Beds</FormLabel>
+                                                <FormLabel disabled={!wantBeds}>Requirement of Beds</FormLabel>
                                                 <Grid direction="row" container md={12} lg={12} xl={12} sm={12}>
                                                     <Grid item xl={2} lg={4} md={5} sm={11} xs={11}>
                                                         <FormControlLabel
                                                             disabled={mode}
                                                             value="end"
-                                                            control={<Checkbox color="primary" />}
+                                                            control={<Checkbox
+                                                                defaultChecked={wantBeds}
+                                                                onChange={e => setWantBeds(e.target.checked)}
+                                                                color="primary" />}
                                                             label="Beds"
                                                             labelPlacement="end"
                                                             classes={formClasses}
@@ -195,7 +257,10 @@ const Checkboxes = (props) => {
                                                     </Grid>
                                                     <Grid item xl={10} lg={8} md={7} sm={11} xs={11}>
                                                         <Box
-                                                            disabled={mode}
+                                                            defaultValue={beds}
+                                                            onChange={handleChange}
+                                                            name={"bed"}
+                                                            disabled={!wantBeds || mode}
                                                             paddingLeft="0.75rem"
                                                             paddingRight="0.75rem"
                                                             component={FilledInput}
@@ -214,15 +279,26 @@ const Checkboxes = (props) => {
                                             <FormGroup>
                                                 <FormLabel>Description</FormLabel>
                                                 <Grid item md={12} lg={12} xl={12} sm={12}>
-                                                    <Box
-                                                        disabled={mode}
-                                                        paddingLeft="0.75rem"
-                                                        paddingRight="0.75rem"
-                                                        component={FilledInput}
-                                                        autoComplete="off"
-                                                        type="text"
-                                                        placeholder="........."
-                                                    />
+                                                    <FormControl
+                                                        required={true}
+                                                        variant="filled"
+                                                        component={Box}
+                                                        width="100%"
+                                                        marginBottom="1rem!important"
+                                                    >
+                                                        <Box
+                                                            defaultValue={des}
+                                                            onChange={handleChange}
+                                                            name={"des"}
+                                                            disabled={mode}
+                                                            paddingLeft="0.75rem"
+                                                            paddingRight="0.75rem"
+                                                            component={FilledInput}
+                                                            autoComplete="off"
+                                                            type="text"
+                                                            placeholder="........."
+                                                        />
+                                                    </FormControl>
                                                 </Grid>
                                             </FormGroup>
                                             <Box
@@ -231,58 +307,60 @@ const Checkboxes = (props) => {
                                                 marginTop="1.5rem!important"
                                             />
                                             {!mode &&
-                                                <FormGroup>
-                                                    <FormLabel>Proof in Pictures</FormLabel>
-                                                    <Grid direction="row" container md={12} lg={12} xl={12} sm={12}>
-                                                        <Box
-                                                            paddingLeft="0.75rem"
-                                                            paddingRight="0.75rem"
-                                                            component={DropzoneArea}
-                                                            maxFileSize={300000000}
-                                                            acceptedFiles={['image/jpeg, image/png']}
-                                                            filesLimit={3}
-                                                            dropzoneText={"Enter any three picture as proof like receipt and prescription in png or jpeg format"}
-                                                        />
-                                                    </Grid>
-                                                </FormGroup>
+                                            <FormGroup>
+                                                <FormLabel>Proof in Pictures</FormLabel>
+                                                <Grid direction="row" container md={12} lg={12} xl={12} sm={12}>
+                                                    <Box
+                                                        onChange={setFiles}
+                                                        required={true}
+                                                        paddingLeft="0.75rem"
+                                                        paddingRight="0.75rem"
+                                                        component={DropzoneArea}
+                                                        maxFileSize={300000000}
+                                                        acceptedFiles={['image/jpeg, image/png']}
+                                                        filesLimit={3}
+                                                        dropzoneText={"Enter any three picture as proof like receipt and prescription in png or jpeg format"}
+                                                    />
+                                                </Grid>
+                                            </FormGroup>
                                             }
                                         </FormGroup>
                                     </Grid>
                                 </div>
                                 <div className={classes.plLg4}>
                                     <Grid item>
-                                        {mode ?
-                                            <Box textAlign="right" marginTop="1.5rem" marginBottom="1.5rem">
-                                                <Button
-                                                    to="/admin/dashboard"
-                                                    size="medium"
-                                                    component={Link}
-                                                    color="primary"
-                                                    variant="contained"
-                                                >
-                                                    Want to Help
-                                                </Button>
-                                            </Box>
-                                            :
-                                            <Box textAlign="right" marginTop="1.5rem" marginBottom="1.5rem">
-                                                <Button
-                                                    to="/admin/dashboard"
-                                                    size="medium"
-                                                    component={Link}
-                                                    color="default"
-                                                    variant="contained"
-                                                >
-                                                    Submit
-                                                </Button>
-                                            </Box>
-                                        }
+                                        <Box textAlign="right" marginTop="1.5rem" marginBottom="1.5rem">
+                                            <Button
+                                                type="submit"
+                                                disabled={!loggedIn}
+                                                size="medium"
+                                                color="primary"
+                                                variant="contained"
+                                            >
+                                                {!loggedIn ? "Log In First" : mode ? "Submit" : "Want to Help"}
+                                            </Button>
+                                        </Box>
                                     </Grid>
                                 </div>
                             </CardContent>
                         </Card>
                     </Grid>
                 </Grid>
-            </Container>
+            </form>
+        </Container>
+    )
+
+    return (
+        <>
+            <UserHeader />
+            {loading ?
+                <Grid container justify={"center"} alignItems={"center"}>
+                    <CircularProgress />
+                </Grid>
+                :
+                mainView()
+            }
+
         </>
     );
 }
